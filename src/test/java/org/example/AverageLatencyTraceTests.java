@@ -19,7 +19,7 @@ public class AverageLatencyTraceTests {
     }
 
     @Test
-    void Should_ReturnValidResult_When_ThereIsSuchTrace() {
+    void Should_ReturnValidResult_When_TraceExists() {
         Graph<String, DefaultWeightedEdge> inputGraph = GraphUtils.readGraphFromString("AB5, BC1, CD3");
 
         Integer output = MetricService.getAverageLatencyTrace(inputGraph, "A", "B", "C", "D");
