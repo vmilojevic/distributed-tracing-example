@@ -1,8 +1,10 @@
 package org.example.util;
 
-public class OutputUtils {
+public final class OutputUtils {
 
-    public static void printOutput(Integer order, Integer value) {
+    private OutputUtils() {}
+
+    public static void printOutput(Integer order, Number value) {
         String output;
         if (value == null) {
             output = order + ". NO SUCH TRACE";

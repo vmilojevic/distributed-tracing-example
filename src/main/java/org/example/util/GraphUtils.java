@@ -4,7 +4,9 @@ import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
-public class GraphUtils {
+public final class GraphUtils {
+
+    private GraphUtils() {}
 
     // TODO: read graph from a text file
     // TODO: check if input is in correct format

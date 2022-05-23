@@ -16,5 +16,7 @@ public class Main {
         OutputUtils.printOutput(3, MetricService.getAverageLatencyTrace(graph, "A", "D", "C"));
         OutputUtils.printOutput(4, MetricService.getAverageLatencyTrace(graph, "A", "E", "B", "C", "D"));
         OutputUtils.printOutput(5, MetricService.getAverageLatencyTrace(graph, "A", "E", "D"));
+        OutputUtils.printOutput(8, MetricService.getLengthOfShortestTrace(graph, "A", "C"));
+        OutputUtils.printOutput(9, MetricService.getLengthOfShortestTrace(graph, "B", "B"));
     }
 }
