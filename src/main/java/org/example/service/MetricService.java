@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.jgrapht.Graph;
+import org.jgrapht.alg.shortestpath.AllDirectedPaths;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
@@ -30,7 +31,25 @@ public class MetricService {
         }
     }
 
-    public void getNumberOfDifferentTraces(String startNode, String endNode, Predicate<Integer> predicate) {
+    public static Integer getAllTracesByNumberOfHops(
+            Graph<String, DefaultWeightedEdge> graph,
+            String startNode,
+            String endNode,
+            int maxHops) {
+        var allPaths =
+                new AllDirectedPaths<>(graph).getAllPaths(startNode, endNode, true, maxHops);
+        if (startNode.equals(endNode)) {
+            return allPaths.size() - 1;
+        } else {
+            return allPaths.size();
+        }
+    }
 
+    public static Integer getAllTracesByLatency(
+            Graph<String, DefaultWeightedEdge> graph,
+            String startNode,
+            String endNode,
+            Predicate<Number> latencyPredicate) {
+        return 1;
     }
 }

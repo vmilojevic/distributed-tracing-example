@@ -4,7 +4,7 @@ public final class OutputUtils {
 
     private OutputUtils() {}
 
-    public static void printOutput(Integer order, Number value) {
+    public static void printOutput(Integer order, Object value) {
         String output;
         if (value == null) {
             output = order + ". NO SUCH TRACE";
