@@ -1,6 +1,8 @@
-package org.example.metric;
+package org.example.metric.service;
 
 import org.example.graph.DirectedWeightedGraph;
+import org.example.metric.MetricConditionType;
+import org.example.metric.MetricService;
 import org.example.util.GraphUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

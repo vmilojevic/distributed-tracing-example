@@ -1,4 +1,4 @@
-package org.example.metric;
+package org.example.metric.service;
 
 public class LengthOfShortestTraceTests {
 
