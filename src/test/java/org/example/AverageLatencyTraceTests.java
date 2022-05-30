@@ -1,28 +1,30 @@
 package org.example;
 
-import org.example.service.MetricService;
+import org.example.graph.DirectedWeightedGraph;
+import org.example.metric.MetricService;
 import org.example.util.GraphUtils;
-import org.jgrapht.Graph;
-import org.jgrapht.graph.DefaultWeightedEdge;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class AverageLatencyTraceTests {
 
     @Test
     void Should_ReturnNull_When_ThereIsNoSuchTrace() {
-        Graph<String, DefaultWeightedEdge> inputGraph = GraphUtils.readGraphFromString("AB5, CD1");
+        DirectedWeightedGraph<String> inputGraph = GraphUtils.readGraphFromString("AB5, CD1");
 
-        Integer output = MetricService.getAverageLatencyTrace(inputGraph, "A", "C");
+        Integer output = MetricService.getAverageLatencyTrace(inputGraph, Arrays.asList("A", "C"));
 
         Assertions.assertNull(output);
     }
 
     @Test
     void Should_ReturnValidResult_When_TraceExists() {
-        Graph<String, DefaultWeightedEdge> inputGraph = GraphUtils.readGraphFromString("AB5, BC1, CD3");
+        DirectedWeightedGraph<String> inputGraph = GraphUtils.readGraphFromString("AB5, BC1, CD3");
 
-        Integer output = MetricService.getAverageLatencyTrace(inputGraph, "A", "B", "C", "D");
+        Integer output = MetricService.getAverageLatencyTrace(inputGraph, Arrays.asList("A", "B", "C", "D"));
 
         Assertions.assertNotNull(output);
         Assertions.assertEquals(9, output);
@@ -30,18 +32,18 @@ public class AverageLatencyTraceTests {
 
     @Test
     void Should_ReturnNull_When_NodeDoesNotExist() {
-        Graph<String, DefaultWeightedEdge> inputGraph = GraphUtils.readGraphFromString("AB5, CD1");
+        DirectedWeightedGraph<String> inputGraph = GraphUtils.readGraphFromString("AB5, CD1");
 
-        Integer output = MetricService.getAverageLatencyTrace(inputGraph, "A", "E");
+        Integer output = MetricService.getAverageLatencyTrace(inputGraph, Arrays.asList("A", "E"));
 
         Assertions.assertNull(output);
     }
 
     @Test
     void Should_ReturnZero_When_NodesParameterContainsOnlyOneNode() {
-        Graph<String, DefaultWeightedEdge> inputGraph = GraphUtils.readGraphFromString("AB5, CD1");
+        DirectedWeightedGraph<String> inputGraph = GraphUtils.readGraphFromString("AB5, CD1");
 
-        Integer output = MetricService.getAverageLatencyTrace(inputGraph, "A");
+        Integer output = MetricService.getAverageLatencyTrace(inputGraph, List.of("A"));
 
         Assertions.assertEquals(0, output);
     }
