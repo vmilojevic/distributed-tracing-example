@@ -4,7 +4,8 @@ import org.example.graph.DirectedWeightedGraph;
 
 public final class GraphUtils {
 
-    private GraphUtils() {}
+    private GraphUtils() {
+    }
 
     // TODO: read graph from a text file
     // TODO: check if input is in correct format
@@ -12,7 +13,7 @@ public final class GraphUtils {
         String[] edges = input.split(", ");
 
         DirectedWeightedGraph<String> graph = new DirectedWeightedGraph<>();
-        for (String edge: edges) {
+        for (String edge : edges) {
             String start = String.valueOf(edge.charAt(0));
             String end = String.valueOf(edge.charAt(1));
             int weight = Integer.parseInt(String.valueOf(edge.charAt(2)));

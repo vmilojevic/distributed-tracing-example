@@ -39,8 +39,8 @@ public class MetricService {
         while (depth <= hops && !queue.isEmpty()) {
             BfsLabel<T> bfsLabel = queue.poll();
             depth = bfsLabel.getValue();
-            var adjacentNodes = graph. getAdjacentNodes(bfsLabel.getNode());
-            for (T adjNode: adjacentNodes) {
+            var adjacentNodes = graph.getAdjacentNodes(bfsLabel.getNode());
+            for (T adjNode : adjacentNodes) {
                 if (adjNode.equals(end) && conditionType.apply(depth + 1, hops)) {
                     count++;
                 }
@@ -67,7 +67,7 @@ public class MetricService {
             BfsLabel<T> bfsLabel = queue.poll();
             latency = bfsLabel.getValue();
             var adjacentNodes = graph.getAdjacentNodes(bfsLabel.getNode());
-            for (T adjNode: adjacentNodes) {
+            for (T adjNode : adjacentNodes) {
                 int weight = graph.getEdgeWeight(bfsLabel.getNode(), adjNode);
                 if (adjNode.equals(end) && conditionType.apply(latency + weight, avgLatency)) {
                     count++;

@@ -1,7 +1,6 @@
-package org.example;
+package org.example.metric;
 
 import org.example.graph.DirectedWeightedGraph;
-import org.example.metric.MetricService;
 import org.example.util.GraphUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
