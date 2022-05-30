@@ -2,7 +2,8 @@ package org.example.util;
 
 public final class OutputUtils {
 
-    private OutputUtils() {}
+    private OutputUtils() {
+    }
 
     public static void printOutput(Integer order, Object value) {
         String output;
