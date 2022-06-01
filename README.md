@@ -3,8 +3,8 @@
 ## Tech Stack
 <pre>Java 11, Maven, JUnit 5</pre>
 ## Prerequisites
-- Java 11 (or above) installed
-- Maven installed
+- Java 11 is installed
+- Maven is installed
 ## Build
 <pre>mvn clean install</pre>
 ## Test
