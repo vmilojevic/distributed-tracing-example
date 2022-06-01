@@ -6,6 +6,10 @@ import org.example.graph.BfsLabel;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map;
 
 public class MetricService {
 
@@ -79,5 +83,53 @@ public class MetricService {
         }
 
         return count;
+    }
+
+    public static <T> Integer getShortestPath(DirectedWeightedGraph<T> graph, T start, T end) {
+        var settledNodes = new HashSet<T>();
+        var unsettledNodes = new HashSet<T>();
+        var distances = new HashMap<T, Integer>();
+
+        var adjacentNodes = graph.getAdjacentNodes(start);
+        for (T node: adjacentNodes) {
+            distances.put(node, graph.getEdgeWeight(start, node));
+            unsettledNodes.add(node);
+        }
+
+        while (!unsettledNodes.isEmpty()) {
+            var currentNode = getLowestDistanceNode(unsettledNodes, distances);
+            unsettledNodes.remove(currentNode);
+            for (T node : graph.getAdjacentNodes(currentNode)) {
+                Integer weight = graph.getEdgeWeight(currentNode, node);
+                if (!settledNodes.contains(node)) {
+                    calculateMinimumDistance(node, weight, currentNode, distances);
+                    unsettledNodes.add(node);
+                }
+            }
+            settledNodes.add(currentNode);
+        }
+
+        return distances.get(end);
+    }
+
+    private static <T> T getLowestDistanceNode(Set<T> unsettledNodes, Map<T, Integer> distances) {
+        T lowesDistanceNode = null;
+        int lowestDistance = Integer.MAX_VALUE;
+        for (T node : unsettledNodes) {
+            int nodeDistance = distances.getOrDefault(node, Integer.MAX_VALUE);
+            if (nodeDistance < lowestDistance) {
+                lowestDistance = nodeDistance;
+                lowesDistanceNode = node;
+            }
+        }
+        return lowesDistanceNode;
+    }
+
+    private static <T> void calculateMinimumDistance(T evaluationNode, Integer weight, T sourceNode, Map<T, Integer> distances) {
+        int sourceDistance = distances.getOrDefault(sourceNode, Integer.MAX_VALUE);
+        int evaluationDistance = distances.getOrDefault(evaluationNode, Integer.MAX_VALUE);
+        if (sourceDistance + weight < evaluationDistance) {
+            distances.put(evaluationNode, sourceDistance + weight);
+        }
     }
 }
