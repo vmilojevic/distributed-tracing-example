@@ -6,7 +6,6 @@ import java.nio.file.Path;
 public final class IOUtils {
 
     private static final String TXT_EXTENSION = "txt";
-    private static final String REGEX_PATTERN = "([A-Z]{2}[0-9]{0,9}[,][ ])([A-Z]{2}[0-9]{0,9}[,][ ])*([A-Z]{2}[0-9]{0,9})";
 
     private IOUtils() {
     }
@@ -25,12 +24,7 @@ public final class IOUtils {
         }
 
         Path path = Path.of(filename);
-        String content = Files.readString(path).strip().toUpperCase();
-        if (content.matches(REGEX_PATTERN)) {
-            return content;
-        } else {
-            throw new Exception("Content of the input file must be in the following format: " + REGEX_PATTERN);
-        }
+        return Files.readString(path).strip().toUpperCase();
     }
 
     public static void printOutput(int order, Object value) {

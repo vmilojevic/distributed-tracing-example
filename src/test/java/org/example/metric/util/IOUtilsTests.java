@@ -45,16 +45,6 @@ public class IOUtilsTests {
     }
 
     @Test
-    void Should_ThrowException_When_FileContentDoesNotMatchRegex() {
-        String filename = "src/test/resources/invalid-graph.txt";
-
-        Exception exception = Assertions.assertThrows(Exception.class, () -> IOUtils.readTxtFileAsString(filename));
-        Assertions.assertEquals("Content of the input file must be in the following format: " +
-                                "([A-Z]{2}[0-9]{0,9}[,][ ])([A-Z]{2}[0-9]{0,9}[,][ ])*([A-Z]{2}[0-9]{0,9})",
-                                exception.getMessage());
-    }
-
-    @Test
     void Should_ThrowException_When_FileDoesNotExist() {
         String filename = "invalid-path.txt";
 
