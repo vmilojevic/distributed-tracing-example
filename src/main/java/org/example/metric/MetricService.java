@@ -140,7 +140,7 @@ public class MetricService {
      * @param <T>   Node class
      * @return      Length of the shortest path as Integer.
      */
-    public static <T> Integer getLengthOfShortestPath(DirectedWeightedGraph<T> graph, T start, T end) {
+    public static <T> Integer getLengthOfShortestTrace(DirectedWeightedGraph<T> graph, T start, T end) {
         var settledNodes = new HashSet<T>();
         var unsettledNodes = new HashSet<T>();
         var distances = new HashMap<T, Integer>();

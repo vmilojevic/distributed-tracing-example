@@ -22,8 +22,8 @@ public class Main {
             IOUtils.printOutput(5, MetricService.getAverageLatencyTrace(graph, Arrays.asList("A", "E", "D")));
             IOUtils.printOutput(6, MetricService.getNumberOfTracesByHops(graph, "C", "C", 4, MetricConditionType.LESS_THAN));
             IOUtils.printOutput(7, MetricService.getNumberOfTracesByHops(graph, "A", "C", 4, MetricConditionType.EQUALS));
-            IOUtils.printOutput(8, MetricService.getLengthOfShortestPath(graph, "A", "C"));
-            IOUtils.printOutput(9, MetricService.getLengthOfShortestPath(graph, "C", "C"));
+            IOUtils.printOutput(8, MetricService.getLengthOfShortestTrace(graph, "A", "C"));
+            IOUtils.printOutput(9, MetricService.getLengthOfShortestTrace(graph, "C", "C"));
             IOUtils.printOutput(10, MetricService.getNumberOfTracesByLatency(graph, "C", "C", 30, MetricConditionType.LESS_THAN));
         } catch (Exception e) {
             System.out.println(e.getMessage());
