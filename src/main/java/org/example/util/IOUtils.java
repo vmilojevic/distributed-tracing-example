@@ -23,12 +23,13 @@ public final class IOUtils {
         if (!TXT_EXTENSION.equals(getExtensionFromFilename(filename))) {
             throw new Exception("Input file must be a .txt file.");
         }
+
         Path path = Path.of(filename);
         String content = Files.readString(path).strip().toUpperCase();
         if (content.matches(REGEX_PATTERN)) {
             return content;
         } else {
-            throw new Exception("Content of the input file must be in format: " + REGEX_PATTERN);
+            throw new Exception("Content of the input file must be in the following format: " + REGEX_PATTERN);
         }
     }
 
